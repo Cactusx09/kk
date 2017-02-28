@@ -33,11 +33,14 @@ $(document).ready(function () {
 			.find('.g_calendar__body')
 			.eq(n).addClass('current')
 			.siblings().removeClass('current');
-		var h6 = $(this).parent().next('h6');
+		var h5 = $(this).parent().next('h5');
+		var scroll = $(this).parent().nextAll('.g_calendar__scroll');
 		if(n==0){
-			h6.addClass('active');
+			h5.addClass('active');
+			scroll.addClass('active');
 		}else{
-			h6.removeClass('active');
+			h5.removeClass('active');
+			scroll.removeClass('active');
 		}
 	});
 	//calendar slider
@@ -57,7 +60,16 @@ $(document).ready(function () {
 		$(this).addClass('active').siblings().removeClass('active');
 		sl_calendar.goToSlide(n);
 	});
-	//popups
+	$(".g_calendar__body").scroll(function () {
+		var scroll = $(this).prevAll('.g_calendar__scroll'),
+			body = $(this);
+		scroll.scrollLeft(body.scrollLeft());
+	});
+	$(".g_calendar__scroll").scroll(function () {
+		var scroll = $(this),
+			body = scroll.nextAll('.g_calendar__body');
+		body.scrollLeft(scroll.scrollLeft());
+	});
 	//popups
 	$('._open_pop').click(function(e){
 		e.preventDefault();

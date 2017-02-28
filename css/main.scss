@@ -1451,6 +1451,11 @@ h1,.h1{
 					}
 				}
 			}
+			&__scroll{
+				>div{
+					min-width: 1617px;
+				}
+			}
 			&__row{
 				min-width: 1617px;
 				h5{
@@ -1579,14 +1584,44 @@ label.css-label {
 	.g_block{
 		width: 30.75%;
 	}
+	.g_calendar__scroll{
+		height: 15px;
+		opacity: 0;
+		&.active{
+			opacity: 1;
+		}
+		>div{
+			height: 20px;
+		}
+	}
+	.g_calendar__scroll,
 	.g_calendar__body{
-		overflow: auto;
+		overflow-x: auto;
+		overflow-y: hidden;
 		max-width: calc(100% + 17px);
 		margin-left: 20px;
 		margin-bottom: 20px;
 	}
+	.g_calendar__win,
+	.g_calendar__reviews{
+		max-width: 100% !important;
+		overflow: visible;
+		margin-left: 0;
+	}
+	.g_calendar__scroll>div,
 	.g_calendar__row{
 		min-width: 1550px;
+	}
+	.g_calendar__win_filter{
+		flex-wrap: wrap;
+		&_date{
+			margin-right: 0;
+			margin-bottom: 30px;
+		}
+		&_month{
+			a{
+margin-bottom: 10px;}
+		}
 	}
 }
 @media only screen and (min-width: 1301px) {
@@ -1671,6 +1706,9 @@ label.css-label {
 		padding-left: 20px;
 		padding-right: 20px;
 	}
+	.g_calendar__blocks_item{
+		width: calc(33% - 38px);
+	}
 }
 @media only screen and (max-width: 1100.5px){
 	.s_main__quest{
@@ -1751,6 +1789,15 @@ label.css-label {
 	}
 	.s_main__sertificate_head .h1{
 		font-size: 2em;
+	}
+	.g_calendar__blocks_item{
+		width: 100%;
+	}
+	.g_calendar__reviews{
+		flex-wrap: wrap;
+		&_col{
+			max-width: 100%;
+		}
 	}
 }
 @media only screen and (max-width: 650.5px) {
